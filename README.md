@@ -10,10 +10,10 @@
 </p>
 42 Cursus Printf</p>
 </p>
-My second project at 42 Lisboa, in which a "libftprintf.a" file should be made and must include a set of functions in order to recreate the printf() function of the stdio.h library.
+My second project at 42 Lisboa, in which a "libftprintf.a" file should be made, including a set of functions in order to recreate the printf() function of the stdio.h library.
 </p>
 
-This is the [subject](https://cdn.intra.42.fr/pdf/pdf/55808/en.subject.pdf) of the project.
+This is the [subject](ttps://github.com/zecalejo/42printf/blob/master/en.subject.pdf) of the project.
 </p>
 
-Use these links to check the [Makefile]((https://github.com/zecalejo/42printf/blob/master/Makefile) and [header file](https://github.com/zecalejo/42printf/blob/master/libftprintf.h).
+Use these links to check the [Makefile](https://github.com/zecalejo/42printf/blob/master/Makefile) and [header file](https://github.com/zecalejo/42printf/blob/master/libftprintf.h).
