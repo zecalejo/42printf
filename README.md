@@ -13,7 +13,7 @@
 My second project at 42 Lisboa, in which a "libftprintf.a" file should be made, including a set of functions in order to recreate the printf() function of the stdio.h library.
 </p>
 
-This is the [subject](ttps://github.com/zecalejo/42printf/blob/master/en.subject.pdf) of the project.
+This is the [subject](https://github.com/zecalejo/42printf/blob/master/en.subject.pdf) of the project.
 </p>
 
 Use these links to check the [Makefile](https://github.com/zecalejo/42printf/blob/master/Makefile) and [header file](https://github.com/zecalejo/42printf/blob/master/libftprintf.h).
