@@ -6,9 +6,13 @@
 /*   By: jnuncio- <jnuncio-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:12:51 by jnuncio-          #+#    #+#             */
-/*   Updated: 2022/11/14 18:44:58 by jnuncio-         ###   ########.fr       */
+/*   Updated: 2022/11/17 22:09:41 by jnuncio-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
+int	ft_printf(const char *s, ...)
+{
+	
+}
