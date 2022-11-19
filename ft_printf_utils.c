@@ -6,7 +6,7 @@
 /*   By: jnuncio- <jnuncio-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 21:24:45 by jnuncio-          #+#    #+#             */
-/*   Updated: 2022/11/17 17:27:51 by jnuncio-         ###   ########.fr       */
+/*   Updated: 2022/11/18 23:57:01 by jnuncio-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,33 +17,6 @@ void	ft_putchar_fd(char c, int fd)
 	write(fd, &c, sizeof(c));
 }
 
-void	ft_putnbr_fd(int n, int fd)
-{
-	char	c;
-
-	if (n < 0)
-	{
-		write(fd, "-", 1);
-		if (n == -2147483648)
-		{
-			write(fd, "2", 1);
-			n = -147483648;
-		}
-		n *= -1;
-		ft_putnbr_fd(n, fd);
-	}
-	else if (n >= 0 && n <= 9)
-	{
-		c = n + '0';
-		write(fd, &c, 1);
-	}
-	else if (n >= 10)
-	{
-		ft_putnbr_fd(n / 10, fd);
-		ft_putnbr_fd(n % 10, fd);
-	}
-}
-
 void	ft_putstr_fd(char *s, int fd)
 {
 	int	i;
@@ -51,4 +24,42 @@ void	ft_putstr_fd(char *s, int fd)
 	i = -1;
 	while (s[++i])
 		write(fd, &s[i], 1);
+}
+
+size_t	ft_strlen(const char *str)
+{
+	int	len;
+
+	len = 0;
+	while (str[len])
+		len++;
+	return (len);
+}
+
+void	*ft_memcpy(void *dest, const void *src, size_t n)
+{
+	size_t	i;
+
+	i = 0;
+	if (src == ((void *)0) && dest == ((void *)0))
+		return (dest);
+	while (i < n)
+	{
+		((char *)dest)[i] = ((char *)src)[i];
+		i++;
+	}
+	return (dest);
+}
+
+char	*ft_strdup(const char *s)
+{
+	char	*s2;
+	int		len;
+
+	len = ft_strlen(s);
+	s2 = malloc(sizeof(char) * (len + 1));
+	if (s2 == NULL)
+		return (NULL);
+	ft_memcpy(s2, s, len + 1);
+	return (s2);
 }

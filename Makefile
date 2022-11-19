@@ -6,7 +6,7 @@
 #    By: jnuncio- <jnuncio-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/14 16:25:15 by jnuncio-          #+#    #+#              #
-#    Updated: 2022/11/17 17:29:56 by jnuncio-         ###   ########.fr        #
+#    Updated: 2022/11/18 23:53:24 by jnuncio-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,8 @@ AR = ar -rcs
 RM = rm -rf
 
 SRC = ft_printf.c\
-	ft_printf_utils.c
+	ft_printf_utils.c\
+	ft_itoa_base.c
 
 OBJ = $(SRC:.c=.o)
 
