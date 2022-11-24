@@ -6,24 +6,26 @@
 /*   By: jnuncio- <jnuncio-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 21:24:45 by jnuncio-          #+#    #+#             */
-/*   Updated: 2022/11/18 23:57:01 by jnuncio-         ###   ########.fr       */
+/*   Updated: 2022/11/24 11:51:49 by jnuncio-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void	ft_putchar_fd(char c, int fd)
+int	ft_putchar(char c)
 {
-	write(fd, &c, sizeof(c));
+	write(1, &c, 1);
+	return (1);
 }
 
-void	ft_putstr_fd(char *s, int fd)
+int	ft_putstr(char *s)
 {
 	int	i;
 
 	i = -1;
 	while (s[++i])
-		write(fd, &s[i], 1);
+		write(1, &s[i], 1);
+	return (i);
 }
 
 size_t	ft_strlen(const char *str)
@@ -36,30 +38,31 @@ size_t	ft_strlen(const char *str)
 	return (len);
 }
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+int	ft_putnbr_base(long long n, char *base)
 {
-	size_t	i;
+	int		blen;
+	int		cnt;
+	char	c;
 
-	i = 0;
-	if (src == ((void *)0) && dest == ((void *)0))
-		return (dest);
-	while (i < n)
+	cnt = 0;
+	blen = ft_strlen(base);
+	if (n < 0)
 	{
-		((char *)dest)[i] = ((char *)src)[i];
-		i++;
+		write(1, "-", 1);
+		// cnt++;
+		n *= -1;
+		cnt += ft_putnbr_base(n, base);
 	}
-	return (dest);
-}
-
-char	*ft_strdup(const char *s)
-{
-	char	*s2;
-	int		len;
-
-	len = ft_strlen(s);
-	s2 = malloc(sizeof(char) * (len + 1));
-	if (s2 == NULL)
-		return (NULL);
-	ft_memcpy(s2, s, len + 1);
-	return (s2);
+	if (n >= 0 && n < blen)
+	{
+		c = base[n];
+		write(1, &c, 1);
+		cnt++;
+	}
+	if (n >= blen)
+	{
+		cnt += ft_putnbr_base(n / blen, base);
+		cnt += ft_putnbr_base(n % blen, base);
+	}
+	return (cnt);
 }
