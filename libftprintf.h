@@ -6,7 +6,7 @@
 /*   By: jnuncio- <jnuncio-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 16:04:47 by jnuncio-          #+#    #+#             */
-/*   Updated: 2022/11/24 11:20:38 by jnuncio-         ###   ########.fr       */
+/*   Updated: 2022/11/25 13:37:20 by jnuncio-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int		ft_printf(const char *s, ...);
 int		ft_putchar(char c);
 int		ft_putstr(char *s);
 int		ft_putnbr_base(long long n, char *base);
+int		ft_putptr_base(size_t n, char *base);
 
 size_t	ft_strlen(const char *str);
 
