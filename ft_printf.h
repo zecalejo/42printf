@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                      :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jnuncio- <jnuncio-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/14 16:04:47 by jnuncio-          #+#    #+#             */
-/*   Updated: 2022/11/25 13:37:20 by jnuncio-         ###   ########.fr       */
+/*   Created: 2022/11/29 19:11:04 by jnuncio-          #+#    #+#             */
+/*   Updated: 2022/11/29 19:12:23 by jnuncio-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
 # include <stdio.h>
 # include <stdarg.h>
@@ -26,9 +26,5 @@ int		ft_putnbr_base(long long n, char *base);
 int		ft_putptr_base(size_t n, char *base);
 
 size_t	ft_strlen(const char *str);
-
-char	*ft_strdup(const char *s);
-
-void	*ft_memcpy(void *dest, const void *src, size_t n);
 
 #endif

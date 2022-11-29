@@ -6,7 +6,7 @@
 /*   By: jnuncio- <jnuncio-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 21:24:45 by jnuncio-          #+#    #+#             */
-/*   Updated: 2022/11/29 18:45:53 by jnuncio-         ###   ########.fr       */
+/*   Updated: 2022/11/29 19:39:09 by jnuncio-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,20 +39,19 @@ size_t	ft_strlen(const char *str)
 	return (len);
 }
 
-int	ft_putnbr_base(size_t n, char *base)
+int	ft_putnbr_base(long long n, char *base)
 {
-	size_t	blen;
-	int		cnt;
-	char	c;
+	long long	blen;
+	int			cnt;
+	char		c;
 
 	cnt = 0;
-	blen = ft_strlen(base);
+	blen = (long long)ft_strlen(base);
 	if (n < 0)
 	{
 		write(1, "-", 1);
-		// cnt++;
 		n *= -1;
-		cnt += ft_putnbr_base(n, base);
+		cnt++;
 	}
 	if (n >= 0 && n < blen)
 	{
@@ -60,7 +59,7 @@ int	ft_putnbr_base(size_t n, char *base)
 		write(1, &c, 1);
 		cnt++;
 	}
-	if (n >= blen)
+	else if (n >= blen)
 	{
 		cnt += ft_putnbr_base(n / blen, base);
 		cnt += ft_putnbr_base(n % blen, base);
@@ -82,7 +81,7 @@ int	ft_putptr_base(size_t n, char *base)
 		write(1, &c, 1);
 		cnt++;
 	}
-	else
+	else if (n >= blen)
 	{
 		cnt += ft_putptr_base(n / blen, base);
 		cnt += ft_putptr_base(n % blen, base);
