@@ -6,27 +6,41 @@
 /*   By: jnuncio- <jnuncio-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:12:51 by jnuncio-          #+#    #+#             */
-/*   Updated: 2022/11/24 12:03:04 by jnuncio-         ###   ########.fr       */
+/*   Updated: 2022/11/24 16:48:22 by jnuncio-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 static int	ft_conv(char c, va_list ap)
 {
 	int	l;
+	int	sign;
 
+	sign = 0;
+	l = 0;
 	if (c == 'c')
 		l = ft_putchar(va_arg(ap, int));
 	else if (c == 's')
 		l = ft_putstr(va_arg(ap, char *));
 	else if (c == 'p')
 	{
+		l = va_arg(ap, size_t);
+		if (l == 0)
+			return (write(1, "(nil)", 5));
 		ft_putstr("0x");
-		l = 2 + ft_putnbr_base(va_arg(ap, unsigned int), "0123456789abcdef");
+		l = 2 + ft_putnbr_base(l, "0123456789abcdef");
 	}	
 	else if (c == 'd' || c == 'i')
-		l = ft_putnbr_base(va_arg(ap, int), "0123456789");
+	{
+		l = va_arg(ap, int);
+		if (l < 0 && ++sign)
+		{
+			write(1, "-", 1);
+			l *= -1;
+		}
+		l = ft_putnbr_base(l, "0123456789");
+	}
 	else if (c == 'u')
 		l = ft_putnbr_base(va_arg(ap, unsigned int), "0123456789");
 	else if (c == 'x')
@@ -35,14 +49,13 @@ static int	ft_conv(char c, va_list ap)
 		l = ft_putnbr_base(va_arg(ap, unsigned int), "0123456789ABCDEF");
 	else if (c == '%')
 		l = ft_putchar('%');
-	return (l);
+	return (l + sign);
 }
 
 int	ft_printf(const char *s, ...)
 {
 	va_list	ap;
 	int		i;
-	char	x;
 	int		cnt;
 
 	va_start(ap, s);
@@ -52,13 +65,13 @@ int	ft_printf(const char *s, ...)
 	{
 		if (s[i] == '%')
 		{
-			x = ft_conv(s[i + 1], ap);
+			cnt += ft_conv(s[i + 1], ap);
 			i += 2;
 		}
 		ft_putchar(s[i]);
 		cnt++;
 	}
-	return (x + cnt);
+	return (cnt);
 }
 
 int	main(void)
@@ -88,11 +101,11 @@ int	main(void)
 	printf("-------------------------\n");
 	// Int
 	printf("Int:\n");
-	ftpf = ft_printf("ft_printf (d) = %d\n", 12345);
-	pf = printf("printf (d) = %d\n", 12345);
+	ftpf = ft_printf("ft_printf (d) = %d \n", INT_MIN);
+	pf = printf("printf (d) = %d\n", INT_MIN);
 	printf("ftpf = %d | pf = %d\n", ftpf, pf);
-	ftpf = ft_printf("\nft_printf (i) = %i\n", -123);
-	pf = printf("printf (i) = %i\n", -123);
+	ftpf = ft_printf("ft_printf (i) = %i\n", LONG_MAX);
+	pf = printf("printf (i) = %i\n", (int)LONG_MAX);
 	printf("ftpf = %d | pf = %d\n", ftpf, pf);
 	printf("-------------------------\n");
 	// Unsigned int
@@ -106,7 +119,7 @@ int	main(void)
 	ftpf = ft_printf("ft_printf (x) = %x\n", 44);
 	pf = printf("printf (x) = %x\n", 44);
 	printf("ftpf = %d | pf = %d\n", ftpf, pf);
-	ftpf = ft_printf("\nft_printf (X) = %X\n", 44);
+	ftpf = ft_printf("ft_printf (X) = %X\n", 44);
 	pf = printf("printf (X) = %X\n", 44);
 	printf("ftpf = %d | pf = %d\n", ftpf, pf);
 	printf("-------------------------\n");

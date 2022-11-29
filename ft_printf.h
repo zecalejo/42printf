@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_printf.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jnuncio- <jnuncio-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 16:04:47 by jnuncio-          #+#    #+#             */
-/*   Updated: 2022/11/24 11:20:38 by jnuncio-         ###   ########.fr       */
+/*   Updated: 2022/11/24 15:34:39 by jnuncio-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,12 @@
 # include <stdarg.h>
 # include <unistd.h>
 # include <stdlib.h>
+# include <limits.h>
 
 int		ft_printf(const char *s, ...);
 int		ft_putchar(char c);
 int		ft_putstr(char *s);
-int		ft_putnbr_base(long long n, char *base);
+int		ft_putnbr_base(size_t n, char *base);
 
 size_t	ft_strlen(const char *str);
 

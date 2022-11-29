@@ -16,4 +16,4 @@ My second project at 42 Lisboa, in which a "libftprintf.a" file should be made, 
 This is the [subject](https://github.com/zecalejo/42printf/blob/master/en.subject.pdf) of the project.
 </p>
 
-Use these links to check the [Makefile](https://github.com/zecalejo/42printf/blob/master/Makefile) and [header file](https://github.com/zecalejo/42printf/blob/master/libftprintf.h).
+Use these links to check the [Makefile](https://github.com/zecalejo/42printf/blob/master/Makefile) and [header file](https://github.com/zecalejo/42printf/blob/master/ft_printf.h).

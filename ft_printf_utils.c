@@ -6,16 +6,15 @@
 /*   By: jnuncio- <jnuncio-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 21:24:45 by jnuncio-          #+#    #+#             */
-/*   Updated: 2022/11/24 11:51:49 by jnuncio-         ###   ########.fr       */
+/*   Updated: 2022/11/24 15:49:22 by jnuncio-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 int	ft_putchar(char c)
 {
-	write(1, &c, 1);
-	return (1);
+	return (write(1, &c, 1));
 }
 
 int	ft_putstr(char *s)
@@ -23,6 +22,8 @@ int	ft_putstr(char *s)
 	int	i;
 
 	i = -1;
+	if (!s)
+		return (write(1, "(null)", 6));
 	while (s[++i])
 		write(1, &s[i], 1);
 	return (i);
@@ -38,22 +39,15 @@ size_t	ft_strlen(const char *str)
 	return (len);
 }
 
-int	ft_putnbr_base(long long n, char *base)
+int	ft_putnbr_base(size_t n, char *base)
 {
-	int		blen;
+	size_t	blen;
 	int		cnt;
 	char	c;
 
 	cnt = 0;
 	blen = ft_strlen(base);
-	if (n < 0)
-	{
-		write(1, "-", 1);
-		// cnt++;
-		n *= -1;
-		cnt += ft_putnbr_base(n, base);
-	}
-	if (n >= 0 && n < blen)
+	if (n < blen)
 	{
 		c = base[n];
 		write(1, &c, 1);
