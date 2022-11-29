@@ -6,7 +6,7 @@
 /*   By: jnuncio- <jnuncio-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:12:51 by jnuncio-          #+#    #+#             */
-/*   Updated: 2022/11/24 16:48:22 by jnuncio-         ###   ########.fr       */
+/*   Updated: 2022/11/29 18:49:15 by jnuncio-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int	ft_conv(char c, va_list ap)
 		if (l == 0)
 			return (write(1, "(nil)", 5));
 		ft_putstr("0x");
-		l = 2 + ft_putnbr_base(l, "0123456789abcdef");
+		l = 2 + ft_putptr_base(va_arg(ap, size_t), "0123456789abcdef");
 	}	
 	else if (c == 'd' || c == 'i')
 	{
